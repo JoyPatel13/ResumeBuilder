@@ -122,4 +122,4 @@ async function getMeController(req,res){
     })
 }
 
-module.exports={registerUserController , loginUserController,logoutUserController}
+module.exports={registerUserController , getMeController,loginUserController,logoutUserController}

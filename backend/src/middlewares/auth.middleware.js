@@ -17,6 +17,7 @@ async function authUser(req,res,next){
         
         //this is new property we are adding to req object
         req.user=decoded;
+        next();
     }catch(err){
         return res.status(401).json({message:'Invalid token'});
     }
