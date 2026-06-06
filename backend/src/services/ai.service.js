@@ -37,22 +37,20 @@ async function generateInterviewReport({ resume, selfDescription, jobDescription
                         Resume: ${resume}
                         Self Description: ${selfDescription}
                         Job Description: ${jobDescription} and provide response as "matchScore" ,"technicalQuestions" , "behavioralQuestions" ,"behavioralQuestions",
-                        "skillGaps" , "preparationPlan(which includes preparation plan with days , eg , day 1: plan" , 
+                        "skillGaps" , "preparationPlan" , 
 `
 
-      const rawSchema = zodToJsonSchema(interviewReportSchema, "interviewReportSchema")
-    const jsonSchema = rawSchema.definitions?.interviewReportSchema ?? rawSchema
-    const response = await ai.models.generateContent({
+         const response = await ai.models.generateContent({
         model: "gemini-2.5-flash",
         contents: prompt,
         config: {
             responseMimeType: "application/json",
-            responseSchema: jsonSchema,
+            responseSchema:zodToJsonSchema(interviewReportSchema),
         
         }
     })
 
-    return JSON.parse(response.text)
+     return JSON.parse(response.text)
 
 
 }
