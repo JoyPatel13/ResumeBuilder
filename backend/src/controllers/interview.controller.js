@@ -3,8 +3,7 @@ const generateInterviewReport = require('../services/ai.service')
 const interviewReportModel = require('../models/inteviewReport.model')
 
 async function generateInterviewReportController(req,res){
-     console.log("file:", req.file);
-    console.log("body:", req.body);
+    
     if (!req.file) {
         return res.status(400).json({
             message: "No file uploaded"
@@ -31,7 +30,7 @@ async function generateInterviewReportController(req,res){
         jobDescription,
         ...interViewReportByAi
     })
-    console.log(interviewReport)
+    
     res.status(201).json({
         message:"Interview report generated successfully",
         interviewReport
