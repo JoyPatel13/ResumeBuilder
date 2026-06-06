@@ -1,6 +1,8 @@
-const express = requires('express');
-const authMiddlewar = require('../middlewares/auth.middleware')
+const express = require('express');
+const authMiddleware = require('../middlewares/auth.middleware')
 const interviewController = require('../controllers/interview.controller')
+const upload = require('../middlewares/file.middleware')
+
 
 const interviewRouter = express.Router();
 
@@ -11,7 +13,7 @@ const interviewRouter = express.Router();
  * @access Private
  */
 
-interviewRouter.post('/' , authMiddlewar.authUser , interviewController.generateInterviewReportController);
+interviewRouter.post('/' , authMiddleware.authUser , upload.single('resume'),interviewController.generateInterviewReportController);
 
 
 module.exports = interviewRouter
