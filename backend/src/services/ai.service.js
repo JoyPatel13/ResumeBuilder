@@ -8,7 +8,7 @@ const ai = new GoogleGenAI({
 async function invokeGeminiAi(){
     console.log("API Key:", process.env.GOOGLE_GENAI_API_KEY?.slice(0, 10));
     const response = await ai.models.generateContent({
-       model : "gemini-2.0-flash", 
+       model : "gemini-2.5-flash-lite", 
        contents : "Hello gemini ! Explain what is interview?"
 
     })
