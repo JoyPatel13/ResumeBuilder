@@ -1,24 +1,5 @@
 const mongoose = require('mongoose');
 
-/**
- * - job description schema :String
- * - resume text :String
- * - self description :String
- * 
- * - matchScore : Number
- * 
- * - Technical questions : [{question : "" , intention : "" , answer : ""}]
- * - Behavioral questions : [{question : "" , intention : "" , answer : ""}]
- * - Skill Gaps : [{skill : "" , severity : {type: String , enum : ["low" , "medium" , "high"]}}]
- * - Preparation plans : [{
- *          day : Number , 
- *          focus : String,
- *          tasks : [Strings]
- * 
- * }]
- * 
- */
-
 const technicalQuestionSchema = new mongoose.Schema({
     question:{
         type: String ,
