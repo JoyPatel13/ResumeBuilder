@@ -3,7 +3,6 @@ const generateInterviewReport = require('../services/ai.service')
 const interviewReportModel = require('../models/inteviewReport.model')
 
 async function generateInterviewReportController(req,res){
-    const resumeFile = req.file
 
     const resumeContent = pdfParse(req.file.buffer)
    const {selfDescription , jobDescription} = req.body
@@ -20,6 +19,10 @@ async function generateInterviewReportController(req,res){
         selfDescription,
         jobDescription,
         ...interViewReportByAi
+    })
+    res.status(201).json({
+        message:"Interview report generated successfully",
+        interviewReport
     })
 
 }
