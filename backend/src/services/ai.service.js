@@ -17,7 +17,9 @@ async function generateInterviewReport({ resume, selfDescription, jobDescription
             responseMimeType: "application/json",
             responseSchema: {
                 type: "object",
+                required: ["title", "matchScore", "technicalQuestions", "behavioralQuestions", "skillGaps", "preparationPlan"],
                 properties: {
+                    title: { type: "string" },
                     matchScore: { type: "number" },
                     technicalQuestions: {
                         type: "array",
