@@ -9,14 +9,15 @@ export const Home = () => {
             </div>
             <div className="right">
                 <div className="input-group">
-                    <label htmlFor="resume">Upload resume</label>
+                    <p>Resume <small className='highlight'>(user Resume and self description for best results)</small></p>
+                    <label className='file-label' htmlFor="resume">Upload resume</label>
                     <input hidden type="file" name="resume" id="resume" accept='.pdf' />
                 </div>
                 <div className="input-group">
                     <label htmlFor="selfDescription">Self Description</label>
                     <textarea  name="selfDescription" id="selfDescription" placeholder='Describe yourself in a few sentences...' ></textarea>
                 </div>
-                <button className="generate-btn">Generate Interview Report</button>
+                <button className="button primary-button">Generate Interview Report</button>
             </div>
         </div>
     </main>
