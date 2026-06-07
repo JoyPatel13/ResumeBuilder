@@ -27,7 +27,7 @@ interviewRouter.get("/report/:interviewId" , authMiddleware.authUser,interviewCo
  * @description get all interview report of logged in user,
  * @access private
  */
-interviewRouter.get("/", authMiddleware.authUser , interviewController.getAllInterview)
+interviewRouter.get("/", authMiddleware.authUser , interviewController.getAllInterviewController)
 
 
 module.exports = interviewRouter
