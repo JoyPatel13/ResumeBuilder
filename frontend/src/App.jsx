@@ -2,7 +2,7 @@ import { RouterProvider } from "react-router"
 import { router } from "./App.routes.jsx"
 import { AuthProvider } from "./features/auth/auth.context.jsx";
 import { useNavigate } from "react-router";
-import { InterviewProvider } from "./features/interview/interview.context.js";
+import { InterviewProvider } from "./features/interview/interview.context.jsx";
 
 function App() {
   

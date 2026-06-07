@@ -6,7 +6,7 @@ const api = axios.create({
 })
 
 export const generateInterviewReport =async ({jobDescription , selfDescription , resumeFile})=>{
-    const formData = new formData()
+    const formData = new FormData()
     formData.append("jobDescription" , jobDescription)
     formData.append("selfDescription" , selfDescription)
     formData.append("resume" , resumeFile);
@@ -23,7 +23,7 @@ export const generateInterviewReport =async ({jobDescription , selfDescription ,
 
 export const getInterviewReportById = async (interviewId)=>{
     const response = await api.get(`/api/interview/report/${interviewId}`)
-    return reponse.data;
+    return response.data;
 }
 
 
