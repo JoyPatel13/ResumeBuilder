@@ -5,6 +5,7 @@ export const Home = () => {
     <main className="home">
         <div className="interview-input-group">
             <div className="left">
+                <label htmlFor="jobDescription"></label>
                 <textarea name="jobDescription"  id="jobDescription" placeholder='Enter job description here...'></textarea>
             </div>
             <div className="right">
