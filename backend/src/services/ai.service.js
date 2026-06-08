@@ -31,10 +31,6 @@ async function generatePdfFromHtml(htmlContent) {
     return pdfBuffer;
 }
 
-// ... keep generateResumePdf exactly as is ...
-const ai = new GoogleGenAI({
-    apiKey: process.env.GOOGLE_GENAI_API_KEY
-})
 
 async function generateInterviewReport({ resume, selfDescription, jobDescription }) {
     const prompt = `Generate an interview report for a candidate with the following details:
