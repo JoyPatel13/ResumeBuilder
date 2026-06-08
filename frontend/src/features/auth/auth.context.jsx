@@ -10,8 +10,11 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const response = await getMe(); // calls GET /auth/me or similar
-                setUser(response.user);
+                const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 10000); // 10s timeout
+            const response = await getMe(controller.signal);
+            clearTimeout(timeout);
+            setUser(response.user);
             } catch (err) {
                 setUser(null);
             } finally {
