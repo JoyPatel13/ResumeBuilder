@@ -82,7 +82,7 @@ async function getAllInterviewController(req,res){
  */
 async function generateResumePdfController(req,res) {
     const {interviewReportId} = req.params;
-    const interviewReport = await interviewReportModel.findById({_id:interviewReportId})
+    const interviewReport = await interviewReportModel.findById(interviewReportId)
 
     if(!interviewReport){
         return res.status(404).json({
@@ -103,4 +103,4 @@ async function generateResumePdfController(req,res) {
 
 }
 
-module.exports = {generateInterviewReportController , getInterviewReportByIdController , getAllInterviewController}
+module.exports = {generateInterviewReportController , getInterviewReportByIdController , getAllInterviewController,generateResumePdfController  }
