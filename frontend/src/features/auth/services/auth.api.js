@@ -39,9 +39,9 @@ export async function logout() {
     }
 }
 
-export async function getMe() {
+export async function getMe(signal) {
     try{
-        const response = await api.get("/api/auth/get-me")
+        const response = await api.get("/api/auth/get-me" , {signal})
         return response.data;
     }catch(err){
         console.log(err);
