@@ -3,7 +3,7 @@
 
 > Upload your resume, paste a job description, and let AI build your personalized interview strategy in seconds.
 
-**[Live Demo](https://prep-iq-sepia.vercel.app)** • Built with the MERN Stack + Google Gemini AI
+**[Live Demo](https://prep-iq-sepia.vercel.app)** • Built with the MERN Stack
 
 ---
 
