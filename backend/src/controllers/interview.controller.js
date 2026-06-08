@@ -1,4 +1,4 @@
-const pdfjsLib = require('pdfjs-dist/legacy/build/pdf.js')
+const pdfjsLib = require('pdfjs-dist')
 const { generateInterviewReport, generateResumePdf } = require('../services/ai.service')
 const interviewReportModel = require('../models/inteviewReport.model')
 
