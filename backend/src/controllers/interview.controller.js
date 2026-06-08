@@ -45,21 +45,20 @@ async function generateInterviewReportController(req,res){
 
 }
 
-async function getInterviewReportByIdController(req,res) {
-    const {interviewID} = req.params;
-    const interviewReport = await interviewReportModel.findOne({_id:interviewID , user:req.user.id});
+async function getInterviewReportByIdController(req, res) {
+    const { interviewId } = req.params; 
+    const interviewReport = await interviewReportModel.findOne({ _id: interviewId, user: req.user.id });
 
-    if(!interviewReport){
+    if (!interviewReport) {
         return res.status(404).json({
             message: "Interview report not found"
         })
     }
 
     res.status(200).json({
-        message:"Interview report fetched successfully",
+        message: "Interview report fetched successfully",
         interviewReport
     })
-
 }
 
 /**
