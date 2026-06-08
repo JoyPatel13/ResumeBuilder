@@ -11,14 +11,14 @@ export const AuthProvider = ({ children }) => {
         const fetchUser = async () => {
             try {
                 const controller = new AbortController();
-            const timeout = setTimeout(() => controller.abort(), 10000); // 10s timeout
+            const timeout = setTimeout(() => controller.abort(), 60000); 
             const response = await getMe(controller.signal);
             clearTimeout(timeout);
             setUser(response.user);
             } catch (err) {
                 setUser(null);
             } finally {
-                setLoading(false); // ← this is the critical part
+                setLoading(false); 
             }
         };
         fetchUser();
