@@ -5,20 +5,38 @@ import { useNavigate } from 'react-router'
 
 const Home = () => {
 
-    const { loading, generateReport, reports , getReports} = useInterview()
+    const { loading, generateReport, reports, getReports } = useInterview()
     const [jobDescription, setJobDescription] = useState("")
     const [selfDescription, setSelfDescription] = useState("")
-    const resumeInputRef = useRef()
+    const resumeInputRef = useRef();
+    const [error, setError] = useState(null)
 
     const navigate = useNavigate()
+
     useEffect(() => {
         getReports()
     }, [])
 
     const handleGenerateReport = async () => {
+        setError(null)
         const resumeFile = resumeInputRef.current.files[0]
-        const data = await generateReport({ jobDescription, selfDescription, resumeFile })
-        navigate(`/interview/${data._id}`)
+
+        if (!jobDescription) return setError("Job Description is required.")
+        if (!resumeFile && !selfDescription) return setError("Please upload a resume or add a self description.")
+
+        try {
+            const data = await generateReport({ jobDescription, selfDescription, resumeFile })
+            navigate(`/interview/${data._id}`)
+        } catch (err) {
+            const status = err.response?.status
+            if (status === 503) {
+                setError("AI servie is currently busy. Please wait a moment and try again.")
+            } else if (status === 429) {
+                setError("AI quota exceeded. Please try again later.")
+            } else {
+                setError("Something went wrong. Please try again.")
+            }
+        }
     }
 
     if (loading) {
@@ -115,12 +133,24 @@ const Home = () => {
 
                 {/* Card Footer */}
                 <div className='interview-card__footer'>
-                    <span className='footer-info'>AI-Powered Strategy Generation &bull; Approx 30s</span>
+
+                    {/* Error message */}
+                    {error && (
+                        <div className='error-box'>
+                            <span>⚠ {error}</span>
+                            <button onClick={() => setError(null)}>✕</button>
+                        </div>
+                    )}
+
+                    <span className='footer-info'>AI-Powered Strategy Generation • Approx 30s</span>
                     <button
                         onClick={handleGenerateReport}
+                        disabled={loading}
                         className='generate-btn'>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" /></svg>
-                        Generate My Interview Strategy
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
+                        </svg>
+                        {loading ? "Generating..." : "Generate My Interview Strategy"}
                     </button>
                 </div>
             </div>

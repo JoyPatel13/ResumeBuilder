@@ -19,7 +19,7 @@ export const useInterview =()=>{
             return response.interviewReport
         }
         catch(err){
-            console.log(err)
+            throw err
         }
         finally{
             setLoading(false)
@@ -36,7 +36,7 @@ export const useInterview =()=>{
             return response.interviewReport
         }
         catch(err){
-            console.log(err);
+            throw err
         }
         finally{
             setLoading(false)
@@ -52,7 +52,7 @@ export const useInterview =()=>{
             setReports(response.interviewReports)
             return response.interviewReports
         }catch(err){
-            console.log(err);
+            throw err
 
         }
         finally{
@@ -76,7 +76,7 @@ export const useInterview =()=>{
             link.click()
         }
         catch(err){
-            console.log(err);
+            throw err;
 
         }
         finally{
