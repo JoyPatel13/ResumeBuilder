@@ -371,24 +371,3 @@ $font-stack:     system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot
         }
     }
 }
-
-.error-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #2d1515;
-    border: 1px solid #f44336;
-    color: #ff6b6b;
-    padding: 10px 16px;
-    border-radius: 6px;
-    margin-bottom: 12px;
-    width: 100%;
-
-    button {
-        background: none;
-        border: none;
-        color: #ff6b6b;
-        cursor: pointer;
-        font-size: 16px;
-    }
-}
